@@ -71,7 +71,7 @@ The database consists of **five relational tables** linked through primary and f
 Uses `LEFT JOIN` with a date filter and `HAVING COUNT() < 2` to isolate low-frequency buyers, along with `DATEDIFF()` to show how long since their last purchase. This gives a marketing team a direct re-engagement shortlist.
 
 ```sql
-SELECT  c.customer_id, c.full_name, c.location,
+SELECT  c.customer_id, c.full_name, c.location, 
         COUNT(p.purchase_id)                      AS total_purchases,
         MAX(p.purchase_date)                      AS last_purchase_date,
         DATEDIFF(CURDATE(), MAX(p.purchase_date)) AS days_since_last_purchase
